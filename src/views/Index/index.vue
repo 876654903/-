@@ -3,14 +3,14 @@
     <el-container style="height: 100%; border: 1px solid #eee">
       <!--el-aside 侧边栏容器  -->
       <el-aside width="200px" style="background-color: #545c64">
-        <el-menu :default-openeds="['1', '2']" router default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+        <el-menu :default-openeds="['3']" router default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
 
           <el-menu-item index="/index/addboard">
             <i class="el-icon-news"></i> 新增广告</el-menu-item>
           <el-menu-item index="/index/home">
             <i class="el-icon-news"></i> 首页概览</el-menu-item>
 
-          <el-submenu index="">
+          <el-submenu index="3">
             <template slot="title">
               <i class="el-icon-news"></i> 广告管理</template>
             <el-menu-item index="/index/boardplan">广告计划</el-menu-item>

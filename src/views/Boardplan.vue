@@ -61,8 +61,65 @@
                 </el-form>
             </el-col>
             <el-col :span='4' :offset="2">
-                 <el-button style="background:#000;color:#fff">默认按钮</el-button>
+                <el-button style="background:#000;color:#fff">默认按钮</el-button>
             </el-col>
+        </el-row>
+
+        <el-row>
+            <el-col :span="2">
+                <el-button type="primary" disabled>+新加创意</el-button>
+            </el-col>
+            <el-col :span="4" :offset="1">
+                <el-select v-model="value2" placeholder="请选择">
+                    <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-col>
+            <el-col :span="4" :offset="8">
+                <div class="block">
+                    <el-date-picker v-model="datevalue" type="date" placeholder="请选择订单日期">
+                    </el-date-picker>
+                </div>
+            </el-col>
+            <el-col :span="3" :offset="1">
+                <el-select v-model="value" placeholder="自定义列">
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-col>
+        </el-row>
+        <el-row style="margin-top:5px;">
+            <el-table :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange" tooltip-effect="dark">
+
+                <el-table-column type="selection" width="55"> </el-table-column>
+                <el-table-column prop="switch" type="" width="55" fixed>
+                    <template slot-scope="scope">
+                        <el-switch v-model="switchValue2" active-color="#13ce66" inactive-color="#ff4949">
+                        </el-switch>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="sucai" label="创意素材" width="100"></el-table-column>
+                <el-table-column prop="createId" label="创意ID" width="100"></el-table-column>
+                <el-table-column prop="type" label="创意类型" width="100"> </el-table-column>
+                <el-table-column prop="size" label="尺寸" width="100"> </el-table-column>
+                <el-table-column prop="pageLink" label="落地页链接" width="100"> </el-table-column>
+                <el-table-column prop="jiance" label="监测链接" width="100"> </el-table-column>
+                <el-table-column prop="cell" label="所属单元" width="100"> </el-table-column>
+                <el-table-column prop="plan" label="所属计划" width="80"> </el-table-column>
+                <el-table-column prop="baoguang" label="曝光量" width="80"> </el-table-column>
+                <el-table-column prop="click" label="点击量" width="80"> </el-table-column>
+                <el-table-column prop="status" label="状态" width="80">
+                    <template>投放中</template>
+                </el-table-column>
+                <el-table-column fixed="right" label="" width="120">
+                    <template slot-scope="scope">
+                        <el-button @click.native.prevent="deleteRow(scope.$index, tableData4)" type="text" size="small">
+                            <i class="el-icon-edit"></i>
+                            <i class="el-icon-delete" style="margin-left:20px"></i>
+                        </el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
         </el-row>
     </div>
 </template>
@@ -89,9 +146,75 @@ export default {
             value4: '',
             form: {
                 name: ''
-            }
+            },
+            options2: [{
+                value: '选项1',
+                label: '批量修改'
+            }, {
+                value: '选项2',
+                label: '双皮奶'
+            }, {
+                value: '选项3',
+                label: '蚵仔煎'
+            }, {
+                value: '选项4',
+                label: '龙须面'
+            }, {
+                value: '选项5',
+                label: '北京烤鸭'
+            }],
+            value2: '',
+            datevalue: '',
+            options3: [{
+                value: '选项1',
+                label: '批量修改'
+            }, {
+                value: '选项2',
+                label: '双皮奶'
+            }, {
+                value: '选项3',
+                label: '蚵仔煎'
+            }, {
+                value: '选项4',
+                label: '龙须面'
+            }, {
+                value: '选项5',
+                label: '北京烤鸭'
+            }],
+            value3: '',
+            tableData: [{
+                createId: "1232",
+                type: "图文(单)",
+                size: "230*250",
+                pageLink: "sdfdsfdsfsdfsdfs",
+                jiance: "sdfdsfdsfsdfsdfs",
+                cell: "12345",
+                plan: "DD-广告测试团队",
+                baoguang: "2000",
+                click: "1000"
+            }, {
+                createId: "1232",
+                type: "图文(单)",
+                size: "230*250",
+                pageLink: "sdfdsfdsfsdfsdfs",
+                jiance: "sdfdsfdsfsdfsdfs",
+                cell: "12345",
+                plan: "DD-广告测试团队",
+                baoguang: "2000",
+                click: "1000"
+            }],
+            multipleSelection: [{
+
+            }],
+            switchValue1:true,
+            switchValue2:true
         }
 
+    },
+    methods: {
+        handleSelectionChange(val) {
+            this.multipleSelection = val;
+        }
     }
 
 }

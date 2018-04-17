@@ -2,9 +2,9 @@
     <div class="addBoard-page">
         <el-container style="height: 100%; border: 1px solid #eee">
             <el-aside width="200px" style="background-color: #545c64 height: 100%;">
-                <el-row class="tac">
+                <el-row >
                      <el-col :span="24">
-                        <el-menu default-active="2" class="el-menu-vertical-demo" router >
+                        <el-menu default-active="2" class="el-menu-vertical-demo" router :default-openeds="['1']">
                              <el-submenu index="1">
                                 <template slot="title">
                                     建立广告计划
@@ -31,6 +31,7 @@
                     </el-col> 
                  </el-row>
             </el-aside>
+            
             <el-main style="background-color: #545c64 height: 100%;padding:0">
                <router-view></router-view>
             </el-main>
